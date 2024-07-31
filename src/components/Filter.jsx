@@ -1,16 +1,15 @@
 
-function Filter(form) {
+function Filter({onChangeInput}) {
 
     const handleFilter = ((ev) => {
-        console.log(event.target.value)
-
+        onChangeInput(event.target.value)
     })
     return (
         <><input
             type="text"
             name="name"
             placeholder="name country"
-            onChange={handleFilter}
+            onChangeInput={handleFilter}
         />
 
         </>
