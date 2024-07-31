@@ -1,6 +1,7 @@
 import "../scss/App.scss";
 import dataCountry from "../services/data.json";
-import Country from "./Country";
+import Country from "./Country"
+import Filter from "./Filter";
 
 function App() {
 
@@ -10,23 +11,8 @@ function App() {
         <h1>Country Info App</h1>
       </header>
       <main>
-      
         <h3>Country</h3>
-        <form className="form" action="">
-          <label className="title_subtitle" htmlFor="name">
-            by Country
-          </label>
-
-          <input
-            className="input"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="name country"
-          // onChange={handleChangeUserName}
-          />
-          <br /> <br />
-        </form>
+      <Filter/>
         <div className="country">
           {
             dataCountry.map((countryItem) => {
