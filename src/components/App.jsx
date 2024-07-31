@@ -5,16 +5,19 @@ import Filter from "./Filter";
 import { useState } from "react";
 
 function App() {
-// const [filter, setFilter] = useState("");
+  const [filterInput, setFilterInput] = useState("");
 
-const renderFilter= ((value)=>{
-//  setFilter(value);
-})
+  const handleFilterChange = ((valueInput) => { //esta funcion reenderiza la variable de estado.
+    setFilterInput(valueInput);
+  });
 
-// //  const filter2 = dataCountry.filter ((countryItem)=> {
-// //   return countryItem.name.common.includes(filter);
+  const filter2 = dataCountry.filter((countryItem) => {
+    if (!filterInput) {
+      return true;
+    }
 
-//  })
+    return countryItem.name.common.toLowerCase().includes(filterInput.toLowerCase());
+  });
 
   return (
     <>
@@ -23,28 +26,24 @@ const renderFilter= ((value)=>{
       </header>
       <main>
         <h3>Country</h3>
-      <Filter onChangeInput={renderFilter}/>
+
+        <Filter onChangeInput={handleFilterChange} />
+
         <div className="country">
-          {
-            dataCountry.map((countryItem) => {
-              return ( 
+          {filter2.map((countryItem) => {
+              return (
                 <Country
-                key={countryItem.flag} 
-                capital={countryItem.capital}
-                flag={countryItem.flag}
-                name={countryItem.name}
-                continente={countryItem.continents}
+                  key={countryItem.flag}
+                  common={countryItem.common}
+                  capital={countryItem.capital}
+                  flag={countryItem.flag}
+                  name={countryItem.name}
+                  continente={countryItem.continents}
                 />
-       
               )
-
-            }
-
-            )
-          }
+          })}
         </div>
       </main>
-
     </>
   )
 }

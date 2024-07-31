@@ -1,12 +1,19 @@
 
-function Country({capital, name,continente}) {
-    
+function Country({ capital, name, continente, flag }) {
+
     return (
         <>
-            <h3>{name.common}</h3>
+
+            <p>{flag}</p>
+            <h2>{name.common}</h2>
+            <h3>{capital[0]}</h3>
+            <p>{continente}</p>
+
+
+
         </>
     );
 };
 
 
-export default Country
+export default Country;
